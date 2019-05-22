@@ -8,6 +8,7 @@
 
 import UIKit
 import os.log
+import FirebaseDatabase
 
 class UserTableViewController: UITableViewController   {
     
@@ -46,7 +47,6 @@ class UserTableViewController: UITableViewController   {
         let user = users[indexPath.row]
         
         cell.userNameLabel.text = user.name
-        cell.userLangsLabel.text = user.langs.joined(separator: ", ")
         cell.userCellImage.image = user.proPic
         
         selectedUser = user
@@ -61,13 +61,12 @@ class UserTableViewController: UITableViewController   {
     private func loadSampleViews()  {
         let photo1 = UIImage(named: "user.png")!
         let name1 = "Jerry"
-        let langs1 = ["Python", "Swift", "Java"]
+        let langs2 = ["Python, 5", "Java, 0"]
         
-        let user1 = User(pic: photo1, name: name1, langs: langs1)
+        let user1 = User(pic: photo1, name: name1, langs: langs2)
         
         let photo2 = UIImage(named: "user.png")!
         let name2 = "Bob"
-        let langs2 = ["Racket", "Javascript"]
         
         let user2 = User(pic: photo2, name: name2, langs: langs2)
         

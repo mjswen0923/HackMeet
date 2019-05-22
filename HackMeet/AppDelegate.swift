@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import FirebaseAuth
+import FirebaseDatabase
 import KeychainSwift
 import Foundation
 
@@ -17,12 +18,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     let keychain = KeychainSwift()
+    
+    override init() {
+        super.init()
+        _ = FirebaseService.sharedInstance
+    }
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        FirebaseApp.configure()
-        
+                
         guard let email = keychain.get("email") else {
             let viewToPresent = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginView")
             self.window?.rootViewController = viewToPresent
@@ -44,7 +49,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 let viewToPresent = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginView") as! LoginViewController
                 self.window?.rootViewController = viewToPresent
             }
-            // ...
         }
         
         return true

@@ -10,7 +10,7 @@ import UIKit
 
 class User  {
     var name: String = ""
-    
+    var username: String = ""
     var langs = [String]()
     var hackathons = [String]()
     var summary = ""

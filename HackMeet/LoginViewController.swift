@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import IQKeyboardManager
 import FirebaseAuth
+import KeychainSwift
 
 class LoginViewController: UIViewController {
     
@@ -17,6 +18,10 @@ class LoginViewController: UIViewController {
     @IBOutlet var passwordField: UITextField!
     @IBOutlet var loginButton: UIButton!
     @IBOutlet var noAccountButton: UIButton!
+    
+    let keychain = KeychainSwift()
+    
+    var user = User.sharedUser
     
     
     override func viewDidLoad() {
@@ -30,6 +35,9 @@ class LoginViewController: UIViewController {
     @objc func handleRegistration() {
         Auth.auth().createUser(withEmail: emailField.text!, password: passwordField.text!){ (user, error) in
             if error == nil{
+                self.keychain.set(self.emailField.text!, forKey: "userEmail")
+                self.user.email = self.emailField.text!
+                self.keychain.set(self.passwordField.text!, forKey: "userPassword")
                 self.performSegue(withIdentifier: "loginToHome", sender: self)
             }
             else{
@@ -46,8 +54,10 @@ class LoginViewController: UIViewController {
         print("clicked the login button")
         Auth.auth().signIn(withEmail: emailField.text!, password: passwordField.text!) { (user, error) in
             if error == nil{
-                let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TabBarView")
-                self.present(vc, animated: true, completion: nil)
+                self.keychain.set(self.emailField.text!, forKey: "userEmail")
+                self.user.email = self.emailField.text!
+                self.keychain.set(self.passwordField.text!, forKey: "userPassword")
+                self.performSegue(withIdentifier: "loginToHome", sender: self)
             }
             else {
                 let alertController = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: .alert)

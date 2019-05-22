@@ -19,11 +19,15 @@ struct UserModel: Codable    {
     var summary: String
     var profilepicture: URL
     var langauges: [Lang]
-    var hackathons: String
+    var hackathons: [String]
+    var contacts: [UserModel]
 }
 
 import UIKit
 import SwiftyJSON
+import FirebaseDatabase
+import Firebase
+import FirebaseFirestore
 
 class FirstViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextViewDelegate, UITableViewDelegate, UITableViewDataSource {
 
@@ -41,10 +45,11 @@ class FirstViewController: UIViewController, UIImagePickerControllerDelegate, UI
     
     var langs = [Lang]()
     
+    var ref = Firestore.firestore()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        
         imagePicker.delegate = self
         imagePicker.allowsEditing = true
         ProfileSummaryTextView.delegate = self
@@ -56,8 +61,7 @@ class FirstViewController: UIViewController, UIImagePickerControllerDelegate, UI
         ProfilePicButton.layer.cornerRadius = 10
         ProfilePicButton.addTarget(self, action: #selector(self.picTouched(_:)), for: .touchUpInside)
         user.proPic = defaults.object(forKey: "UserProfilePicture") as? UIImage ?? UIImage(named: "defaultPic")!
-        //loadViews()
-        loadSampleViews()
+        loadViews()
     }
     
     func textViewDidBeginEditing(_ textView: UITextView)    {
@@ -94,29 +98,20 @@ class FirstViewController: UIViewController, UIImagePickerControllerDelegate, UI
         return cell
     }
     
-    func loadViews()    {
+    private func loadViews()    {
         //load the JSON from the actual users
+        let userDocument = ref.collection("users").document(user.email.replacingOccurrences(of: "@gmail.com", with: ""))
         
-        guard let url = URL(string: "http://google.com") else {return}
-        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
-            guard let dataResponse = data,
-                error == nil else {
-                    print(error?.localizedDescription ?? "Response Error")
-                    return }
-            do {
-                //here dataResponse received from a network request
-                let decoder = JSONDecoder()
-                let model = try decoder.decode([UserModel].self, from:
-                    dataResponse) //Decode JSON Response Data
-                print(model)
-                
-                //do something with JSON
-                
-            } catch let parsingError {
-                print("Error", parsingError)
+        userDocument.getDocument { (document, error) in
+            if let document = document, document.exists {
+                let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
+                print("Document data: \(dataDescription)")
+            } else {
+                print("Document does not exist")
             }
         }
-        task.resume()
+        
+        
     }
     
     private func loadSampleViews()  {
