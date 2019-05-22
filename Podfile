@@ -9,6 +9,8 @@ target 'HackMeet' do
 	pod 'SwiftyJSON'
   pod 'Firebase/Core'
   pod 'Firebase/Auth'
+  pod 'Firebase/Analytics'
+  pod 'Firebase/Database'
   pod 'KeychainSwift', '~>15.0'
   pod 'IQKeyboardManager'
 
