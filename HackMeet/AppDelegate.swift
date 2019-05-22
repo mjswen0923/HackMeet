@@ -28,28 +28,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
                 
-        guard let email = keychain.get("email") else {
+        guard let email = keychain.get("userEmail") else {
             let viewToPresent = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginView")
             self.window?.rootViewController = viewToPresent
             return true
         }
         
-        guard let password = keychain.get("password") else {
+        guard let password = keychain.get("userPassword") else {
             let viewToPresent = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginView") as! LoginViewController
             self.window?.rootViewController = viewToPresent
             return true
         }
         
-        Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
-            if error == nil {
-                let viewToPresent = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController()
-                self.window?.rootViewController = viewToPresent
-            }
-            else    {
-                let viewToPresent = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginView") as! LoginViewController
-                self.window?.rootViewController = viewToPresent
-            }
-        }
+        let viewToPresent = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginView") as! LoginViewController
+        _ = viewToPresent.view
+        viewToPresent.emailField.text = email
+        viewToPresent.passwordField.text = password
+        self.window?.rootViewController = viewToPresent
         
         return true
     }

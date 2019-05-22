@@ -26,6 +26,7 @@
 		F5726E1622681DDB00C6986A /* ThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5726E1522681DDB00C6986A /* ThirdViewController.swift */; };
 		F5726E1822694B7F00C6986A /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5726E1722694B7F00C6986A /* UserTableViewCell.swift */; };
 		F5726E1A22695E8300C6986A /* UserTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5726E1922695E8300C6986A /* UserTableViewController.swift */; };
+		F5B084AF2295C54A00228FCC /* HackathonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B084AE2295C54A00228FCC /* HackathonTableViewCell.swift */; };
 		F5D68036227A8A80008E47FF /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D68035227A8A80008E47FF /* ChatViewController.swift */; };
 		F5D6803C227D2F95008E47FF /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D6803B227D2F95008E47FF /* LoginViewController.swift */; };
 		F5D7B7C72294D97F00A19C8D /* SettingsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D7B7C62294D97F00A19C8D /* SettingsViewCell.swift */; };
@@ -83,6 +84,7 @@
 		F5726E1522681DDB00C6986A /* ThirdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdViewController.swift; sourceTree = "<group>"; };
 		F5726E1722694B7F00C6986A /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
 		F5726E1922695E8300C6986A /* UserTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewController.swift; sourceTree = "<group>"; };
+		F5B084AE2295C54A00228FCC /* HackathonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HackathonTableViewCell.swift; sourceTree = "<group>"; };
 		F5D68035227A8A80008E47FF /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		F5D6803B227D2F95008E47FF /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		F5D7B7C62294D97F00A19C8D /* SettingsViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewCell.swift; sourceTree = "<group>"; };
@@ -209,6 +211,7 @@
 			children = (
 				F552D1A6224D44780064DC0B /* FirstViewController.swift */,
 				F570BFF9227739DB00BDE3D4 /* ProfileLangTableCellView.swift */,
+				F5B084AE2295C54A00228FCC /* HackathonTableViewCell.swift */,
 			);
 			path = ProfileViewController;
 			sourceTree = "<group>";
@@ -484,6 +487,7 @@
 				F570BFFA227739DB00BDE3D4 /* ProfileLangTableCellView.swift in Sources */,
 				F5726E1822694B7F00C6986A /* UserTableViewCell.swift in Sources */,
 				F552D1A7224D44780064DC0B /* FirstViewController.swift in Sources */,
+				F5B084AF2295C54A00228FCC /* HackathonTableViewCell.swift in Sources */,
 				F552D1D7224D49AC0064DC0B /* SettingsViewController.swift in Sources */,
 				F5726E1A22695E8300C6986A /* UserTableViewController.swift in Sources */,
 			);

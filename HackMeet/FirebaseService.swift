@@ -10,11 +10,19 @@ import Foundation
 import Firebase
 import FirebaseDatabase
 import FirebaseAuth
+import FirebaseFirestore
+import FirebaseStorage
 
 class FirebaseService   {
+    
     static var sharedInstance = FirebaseService()
+    
+    var database: Firestore!
+    var storage: Storage!
     
     init()  {
         FirebaseApp.configure()
+        database = Firestore.firestore()
+        storage = Storage.storage()
     }
 }

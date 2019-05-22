@@ -14,6 +14,7 @@ target 'HackMeet' do
   pod 'KeychainSwift', '~>15.0'
   pod 'IQKeyboardManager'
   pod 'Firebase/Firestore'
+  pod 'Firebase/Storage'
 
   target 'HackMeetTests' do
     inherit! :search_paths

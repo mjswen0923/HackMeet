@@ -6,23 +6,6 @@
 //  Copyright © 2019 Matthew Swenson. All rights reserved.
 //
 
-struct Lang: Codable {
-    var language: String!
-    var experience: String!
-}
-
-struct UserModel: Codable    {
-    var name: String
-    var uid: Int
-    var checksum: Int
-    var email: String
-    var summary: String
-    var profilepicture: URL
-    var langauges: [Lang]
-    var hackathons: [String]
-    var contacts: [UserModel]
-}
-
 import UIKit
 import SwiftyJSON
 import FirebaseDatabase
@@ -37,31 +20,38 @@ class FirstViewController: UIViewController, UIImagePickerControllerDelegate, UI
     @IBOutlet var ProfileSummaryTextView: UITextView!
     @IBOutlet var ProfileScreenScrollView: UIScrollView!
     @IBOutlet var languageTableView: UITableView!
+    @IBOutlet var hackathonTableView: UITableView!
+    @IBOutlet var langsLabel: UILabel!
+    @IBOutlet var hackathonsLabel: UILabel!
     
     let imagePicker =  UIImagePickerController()
     
-    var user = User.sharedUser
     let defaults = UserDefaults.standard
-    
-    var langs = [Lang]()
-    
-    var ref = Firestore.firestore()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
         // Do any additional setup after loading the view.
         imagePicker.delegate = self
         imagePicker.allowsEditing = true
+        
         ProfileSummaryTextView.delegate = self
+        
         languageTableView.delegate = self
         languageTableView.dataSource = self
+        
+        hackathonTableView.delegate = self
+        hackathonTableView.dataSource = self
         
         ProfilePicButton.layer.borderColor = (UIColor.init(red: 255/255, green: 150/255, blue: 150/255, alpha: 1)).cgColor
         ProfilePicButton.layer.borderWidth = 5
         ProfilePicButton.layer.cornerRadius = 10
         ProfilePicButton.addTarget(self, action: #selector(self.picTouched(_:)), for: .touchUpInside)
-        user.proPic = defaults.object(forKey: "UserProfilePicture") as? UIImage ?? UIImage(named: "defaultPic")!
-        loadViews()
+        
+        //Firebase functions
+        loadUser()
+        //Doesnt work right now
+        //downloadMedia()
     }
     
     func textViewDidBeginEditing(_ textView: UITextView)    {
@@ -69,8 +59,7 @@ class FirstViewController: UIViewController, UIImagePickerControllerDelegate, UI
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {
-        user.summary = textView.text!
-        print(user.summary)
+        User.sharedUser.summary = textView.text!
         
     }
     
@@ -79,48 +68,109 @@ class FirstViewController: UIViewController, UIImagePickerControllerDelegate, UI
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return langs.count
+        return tableView == languageTableView ? User.sharedUser.langs.count : User.sharedUser.hackathons.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "ProfileLangTableViewCell", for: indexPath) as? ProfileLangTableViewCell else {
-            fatalError("the dequed cell is not an instance of UserTableViewCell")
+        if tableView == languageTableView   {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "ProfileLangTableViewCell", for: indexPath) as? ProfileLangTableViewCell else {
+                fatalError("the dequed cell is not an instance of ProfileLangTableViewCell")
+            }
+            let lang = User.sharedUser.langs[indexPath.row]
+            
+            cell.languageLabel.text = String(lang.split(separator: ",")[0])
+            cell.experienceLabel.text = String(lang.split(separator: ",")[1])
+            
+            return cell
+        }
+        else if tableView == hackathonTableView {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "HackathonTableViewCell", for: indexPath) as? HackathonTableViewCell else {
+                fatalError("the dequed cell is not an instance of HackathonTableViewCell")
+            }
+            let hackathon = User.sharedUser.hackathons[indexPath.row]
+            
+            cell.hackathonLabel.text = hackathon
+            
+            return cell
         }
         
-        let lang = langs[indexPath.row]
-        
-        cell.languageLabel.text = lang.language
-        defaults.set(lang.language, forKey: "userLanguage + \(indexPath)")
-        cell.experienceLabel.text = lang.experience
-        defaults.set(lang.language, forKey: "userExperience + \(indexPath)")
-        
-        return cell
+        //we should never get here
+        return UITableViewCell()
     }
     
-    private func loadViews()    {
-        //load the JSON from the actual users
-        let userDocument = ref.collection("users").document(user.email.replacingOccurrences(of: "@gmail.com", with: ""))
+    
+    /////////FIREBASE DATABASE FUNCTIONS
+    ////////////////////////////////////
+    private func loadUser()    {
+        //load the data from the actual user
+        let userDocument = FirebaseService.sharedInstance.database.collection("users").document(User.sharedUser.email.replacingOccurrences(of: "@gmail.com", with: ""))
         
         userDocument.getDocument { (document, error) in
             if let document = document, document.exists {
-                let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
-                print("Document data: \(dataDescription)")
+                let userData = document.data()!
+                print(userData)
+                
+                User.sharedUser.summary = userData["summary"] as! String
+                self.ProfileSummaryTextView.text = User.sharedUser.summary
+                
+                User.sharedUser.name = userData["name"] as! String
+                self.ProfileNameLabel.text = User.sharedUser.name
+                
+                User.sharedUser.id = userData["uid"] as? Int
+                
+                let langs = userData["langauges"] as! [String]
+                for lang in langs {
+                    let language = String(lang.split(separator: ",")[0])
+                    let experience = String(lang.split(separator: ",")[1])
+                    User.sharedUser.langs += [language + ", " + experience]
+                }
+                self.languageTableView.reloadData()
+                
+                let hackathons = userData["hackathons"] as! [String]
+                for hack in hackathons {
+                    User.sharedUser.hackathons += [hack]
+                }
+                self.hackathonTableView.reloadData()
+                
             } else {
                 print("Document does not exist")
             }
         }
-        
-        
     }
     
-    private func loadSampleViews()  {
-        let lang1 = Lang(language: "Racket", experience: "5 Years")
-        let lang2 = Lang(language: "Java", experience: "2 Years")
-
-        langs += [lang1, lang2]
+    func uploadMedia() {
+        let storage = FirebaseService.sharedInstance.storage
+        var data = Data()
+        let image = self.ProfilePicButton.imageView?.image
+        data = image!.pngData()!
+        print(User.sharedUser.name + "user name")
+        // Create a storage reference from our storage service
+        let storageRef = storage!.reference()
+        let imageRef = storageRef.child("profilepictures/\(User.sharedUser.name).png")
+        _ = imageRef.putData(data, metadata: nil, completion: { (metadata,error ) in
+            guard metadata != nil else {
+                print(error!)
+                return
+            }
+        })
     }
     
+    private func downloadMedia()    {
+        print(User.sharedUser.name + "user name")
+        let storage = FirebaseService.sharedInstance.storage.reference()
+        let profilePicRef = storage.child("profilepictures/\(User.sharedUser.name).png")
+        profilePicRef.getData(maxSize: 5 * 1024 * 1024) { data, error in
+            if let error = error {
+                print("could not download photo")
+                print(error)
+                // Uh-oh, an error occurred!
+            } else {
+                self.ProfilePicButton.imageView!.image = UIImage(data: data!)
+            }
+        }
+    }
+    //////////////////////////////////
     
     /*
      PROFILE PICKER CODE, FOR CAMERA AND PHOTO LIBRARY
@@ -134,9 +184,9 @@ class FirstViewController: UIViewController, UIImagePickerControllerDelegate, UI
         actionSheetController.addAction(addPhotoAction(title: "Take Picture", source: .camera, message: "Sorry, the camera is inaccessible"))
         actionSheetController.addAction(addPhotoAction(title: "Choose From Photos", source: .photoLibrary, message: "Sorry, the photo gallery is inaccessible"))
         
-        if user.proPic.size != CGSize(width: 0, height: 0) {
+        if User.sharedUser.proPic.size != CGSize(width: 0, height: 0) {
             actionSheetController.addAction(UIAlertAction(title: "Delete Current Picture", style: .default) { action -> Void in
-                self.user.proPic = UIImage()
+                User.sharedUser.proPic = UIImage()
                 //self.profileBorder.setImage(UIImage(), for: .normal)
                 self.ProfilePicView.isHidden = false
             })
@@ -171,11 +221,13 @@ class FirstViewController: UIViewController, UIImagePickerControllerDelegate, UI
         let info = convertFromUIImagePickerControllerInfoKeyDictionary(info)
         
         let chosenImage = info[convertFromUIImagePickerControllerInfoKey(UIImagePickerController.InfoKey.editedImage)] as! UIImage
-        user.proPic = chosenImage
-        ProfilePicView.image = chosenImage
-        ProfilePicButton.setImage(user.proPic, for: .normal)
+        User.sharedUser.proPic = chosenImage
+        //ProfilePicView.image = chosenImage
+        ProfilePicButton.setImage(User.sharedUser.proPic, for: .normal)
         ProfilePicButton.imageView?.layer.cornerRadius = ProfilePicButton.layer.cornerRadius
         ProfilePicView.isHidden = true
+        
+        uploadMedia()
         dismiss(animated:true, completion: nil)
     }
     
