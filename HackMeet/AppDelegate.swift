@@ -22,6 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     override init() {
         super.init()
         _ = FirebaseService.sharedInstance
+        _ = User.sharedUser
     }
 
 

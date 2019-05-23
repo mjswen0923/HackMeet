@@ -36,7 +36,12 @@ class User  {
         contactList.append(user)
     }
     
-//    func removeContact(user: User)  {
-//        contactList = contactList.filter{ $0 != user}
-//    }
+    func updateUser() {
+        let db = FirebaseService.sharedInstance.database.collection("users").document(User.sharedUser.email.replacingOccurrences(of: "@gmail.com", with: ""))
+        db.setData(["name" : User.sharedUser.name,
+                    "email": User.sharedUser.email,
+                    "langauges": User.sharedUser.langs,
+                    "summary" : User.sharedUser.summary,
+                    "hackathons" : User.sharedUser.hackathons])
+    }
 }

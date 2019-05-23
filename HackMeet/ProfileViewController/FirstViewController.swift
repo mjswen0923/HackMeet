@@ -100,6 +100,18 @@ class FirstViewController: UIViewController, UIImagePickerControllerDelegate, UI
         return UITableViewCell()
     }
     
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete && tableView == languageTableView {
+            User.sharedUser.langs.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            User.sharedUser.updateUser()
+        } else if editingStyle == .delete && tableView == hackathonTableView    {
+            User.sharedUser.hackathons.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            User.sharedUser.updateUser()
+        }
+    }
+    
     @IBAction func langButtonTouched(_ sender: Any) {
         let alert = UIAlertController(title: "Add Language", message: "Enter your language and years of experience", preferredStyle: .alert)
         
@@ -116,6 +128,7 @@ class FirstViewController: UIViewController, UIImagePickerControllerDelegate, UI
             let experienceTextField = alert?.textFields![1].text
             User.sharedUser.langs.append(langTextField! + ", " + experienceTextField!)
             self.languageTableView.reloadData()
+            User.sharedUser.updateUser()
         }))
         
         self.present(alert, animated: true, completion: nil)
@@ -132,6 +145,7 @@ class FirstViewController: UIViewController, UIImagePickerControllerDelegate, UI
             let hackathonTextField = alert?.textFields![0].text
             User.sharedUser.hackathons.append(hackathonTextField!)
             self.hackathonTableView.reloadData()
+            User.sharedUser.updateUser()
         }))
         
         self.present(alert, animated: true, completion: nil)
@@ -171,7 +185,7 @@ class FirstViewController: UIViewController, UIImagePickerControllerDelegate, UI
                 }
                 self.hackathonTableView.reloadData()
                 
-                self.downloadMedia(fileName: User.sharedUser.name)
+                self.downloadMedia(fileName: User.sharedUser.email)
                 
             } else {
                 print("Document does not exist")
@@ -184,9 +198,8 @@ class FirstViewController: UIViewController, UIImagePickerControllerDelegate, UI
         var data = Data()
         let image = self.ProfilePicButton.imageView?.image
         data = image!.pngData()!
-        // Create a storage reference from our storage service
         let storageRef = storage!.reference()
-        let imageRef = storageRef.child("profilepictures/\(User.sharedUser.name).png")
+        let imageRef = storageRef.child("profilepictures/\(User.sharedUser.email).png")
         _ = imageRef.putData(data, metadata: nil, completion: { (metadata,error ) in
             guard metadata != nil else {
                 print(error!)

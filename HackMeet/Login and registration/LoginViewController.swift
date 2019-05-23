@@ -38,7 +38,7 @@ class LoginViewController: UIViewController {
                 self.keychain.set(self.emailField.text!, forKey: "userEmail")
                 self.user.email = self.emailField.text!
                 self.keychain.set(self.passwordField.text!, forKey: "userPassword")
-                self.performSegue(withIdentifier: "loginToHome", sender: self)
+                self.performSegue(withIdentifier: "toRegister", sender: self)
             }
             else{
                 let alertController = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: .alert)
