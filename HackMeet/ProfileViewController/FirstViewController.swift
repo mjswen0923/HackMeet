@@ -23,6 +23,7 @@ class FirstViewController: UIViewController, UIImagePickerControllerDelegate, UI
     @IBOutlet var hackathonTableView: UITableView!
     @IBOutlet var langsLabel: UILabel!
     @IBOutlet var hackathonsLabel: UILabel!
+    @IBOutlet var langAddButton: UIButton!
     
     let imagePicker =  UIImagePickerController()
     
@@ -30,6 +31,8 @@ class FirstViewController: UIViewController, UIImagePickerControllerDelegate, UI
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.languageTableView.invalidateIntrinsicContentSize()
+        self.hackathonTableView.invalidateIntrinsicContentSize()
 
         // Do any additional setup after loading the view.
         imagePicker.delegate = self
@@ -46,12 +49,10 @@ class FirstViewController: UIViewController, UIImagePickerControllerDelegate, UI
         ProfilePicButton.layer.borderColor = (UIColor.init(red: 255/255, green: 150/255, blue: 150/255, alpha: 1)).cgColor
         ProfilePicButton.layer.borderWidth = 5
         ProfilePicButton.layer.cornerRadius = 10
+        ProfilePicButton.clipsToBounds = true
         ProfilePicButton.addTarget(self, action: #selector(self.picTouched(_:)), for: .touchUpInside)
         
-        //Firebase functions
         loadUser()
-        //Doesnt work right now
-        //downloadMedia()
     }
     
     func textViewDidBeginEditing(_ textView: UITextView)    {
@@ -99,10 +100,47 @@ class FirstViewController: UIViewController, UIImagePickerControllerDelegate, UI
         return UITableViewCell()
     }
     
+    @IBAction func langButtonTouched(_ sender: Any) {
+        let alert = UIAlertController(title: "Add Language", message: "Enter your language and years of experience", preferredStyle: .alert)
+        
+        alert.addTextField { (textField) in
+            textField.text = "Language:"
+        }
+        
+        alert.addTextField { (textField) in
+            textField.text = "Years of experience:"
+        }
+        
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak alert] (_) in
+            let langTextField = alert?.textFields![0].text
+            let experienceTextField = alert?.textFields![1].text
+            User.sharedUser.langs.append(langTextField! + ", " + experienceTextField!)
+            self.languageTableView.reloadData()
+        }))
+        
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    @IBAction func hackathonAddButton(_ sender: Any) {
+        let alert = UIAlertController(title: "Add Hackathon", message: "Enter a hackathon that you've been to", preferredStyle: .alert)
+        
+        alert.addTextField { (textField) in
+            textField.text = "Hackathon:"
+        }
+        
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak alert] (_) in
+            let hackathonTextField = alert?.textFields![0].text
+            User.sharedUser.hackathons.append(hackathonTextField!)
+            self.hackathonTableView.reloadData()
+        }))
+        
+        self.present(alert, animated: true, completion: nil)
+    }
+    
     
     /////////FIREBASE DATABASE FUNCTIONS
     ////////////////////////////////////
-    private func loadUser()    {
+    private func loadUser()  {
         //load the data from the actual user
         let userDocument = FirebaseService.sharedInstance.database.collection("users").document(User.sharedUser.email.replacingOccurrences(of: "@gmail.com", with: ""))
         
@@ -133,6 +171,8 @@ class FirstViewController: UIViewController, UIImagePickerControllerDelegate, UI
                 }
                 self.hackathonTableView.reloadData()
                 
+                self.downloadMedia(fileName: User.sharedUser.name)
+                
             } else {
                 print("Document does not exist")
             }
@@ -144,7 +184,6 @@ class FirstViewController: UIViewController, UIImagePickerControllerDelegate, UI
         var data = Data()
         let image = self.ProfilePicButton.imageView?.image
         data = image!.pngData()!
-        print(User.sharedUser.name + "user name")
         // Create a storage reference from our storage service
         let storageRef = storage!.reference()
         let imageRef = storageRef.child("profilepictures/\(User.sharedUser.name).png")
@@ -156,17 +195,17 @@ class FirstViewController: UIViewController, UIImagePickerControllerDelegate, UI
         })
     }
     
-    private func downloadMedia()    {
-        print(User.sharedUser.name + "user name")
+    private func downloadMedia(fileName: String)    {
         let storage = FirebaseService.sharedInstance.storage.reference()
-        let profilePicRef = storage.child("profilepictures/\(User.sharedUser.name).png")
+        let profilePicRef = storage.child("profilepictures/\(fileName).png")
         profilePicRef.getData(maxSize: 5 * 1024 * 1024) { data, error in
             if let error = error {
                 print("could not download photo")
                 print(error)
                 // Uh-oh, an error occurred!
             } else {
-                self.ProfilePicButton.imageView!.image = UIImage(data: data!)
+                print("downloaded photo")
+                self.ProfilePicButton.setImage(UIImage(data: data!), for: .normal)
             }
         }
     }
