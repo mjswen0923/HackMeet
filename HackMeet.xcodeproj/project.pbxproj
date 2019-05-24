@@ -11,26 +11,27 @@
 		6B5900A22B0DE92687368847 /* Pods_HackMeetTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C85F619562C50CFF0DEB46AA /* Pods_HackMeetTests.framework */; };
 		B59D47607E162B81596E5B03 /* Pods_HackMeet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B33F2F34101574621842A48 /* Pods_HackMeet.framework */; };
 		F552D1A5224D44780064DC0B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F552D1A4224D44780064DC0B /* AppDelegate.swift */; };
-		F552D1A7224D44780064DC0B /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F552D1A6224D44780064DC0B /* FirstViewController.swift */; };
-		F552D1A9224D44780064DC0B /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F552D1A8224D44780064DC0B /* SecondViewController.swift */; };
 		F552D1AC224D44780064DC0B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F552D1AA224D44780064DC0B /* Main.storyboard */; };
 		F552D1AE224D44790064DC0B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F552D1AD224D44790064DC0B /* Assets.xcassets */; };
 		F552D1B1224D44790064DC0B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F552D1AF224D44790064DC0B /* LaunchScreen.storyboard */; };
 		F552D1BC224D44790064DC0B /* HackMeetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F552D1BB224D44790064DC0B /* HackMeetTests.swift */; };
 		F552D1C7224D44790064DC0B /* HackMeetUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F552D1C6224D44790064DC0B /* HackMeetUITests.swift */; };
-		F552D1D7224D49AC0064DC0B /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F552D1D6224D49AC0064DC0B /* SettingsViewController.swift */; };
-		F570BFFA227739DB00BDE3D4 /* ProfileLangTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F570BFF9227739DB00BDE3D4 /* ProfileLangTableCellView.swift */; };
 		F570C0002278DAC800BDE3D4 /* JSON format.rtf in Resources */ = {isa = PBXBuildFile; fileRef = F570BFFF2278DAC800BDE3D4 /* JSON format.rtf */; };
-		F570C0032278E57B00BDE3D4 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = F570C0022278E57B00BDE3D4 /* Networking.swift */; };
-		F5726E0E226510A200C6986A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5726E0D226510A200C6986A /* User.swift */; };
-		F5726E1622681DDB00C6986A /* ThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5726E1522681DDB00C6986A /* ThirdViewController.swift */; };
-		F5726E1822694B7F00C6986A /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5726E1722694B7F00C6986A /* UserTableViewCell.swift */; };
-		F5726E1A22695E8300C6986A /* UserTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5726E1922695E8300C6986A /* UserTableViewController.swift */; };
-		F5AE91472296DC7800191732 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5AE91462296DC7800191732 /* RegistrationViewController.swift */; };
-		F5B084AF2295C54A00228FCC /* HackathonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B084AE2295C54A00228FCC /* HackathonTableViewCell.swift */; };
-		F5D68036227A8A80008E47FF /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D68035227A8A80008E47FF /* ChatViewController.swift */; };
-		F5D6803C227D2F95008E47FF /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D6803B227D2F95008E47FF /* LoginViewController.swift */; };
-		F5D7B7C72294D97F00A19C8D /* SettingsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D7B7C62294D97F00A19C8D /* SettingsViewCell.swift */; };
+		F5AE914A2296F2F400191732 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5AE91492296F2F400191732 /* Constants.swift */; };
+		F5B36EC922984D3900A30F5D /* SettingsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B36EBB22984D3800A30F5D /* SettingsViewCell.swift */; };
+		F5B36ECA22984D3900A30F5D /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B36EBC22984D3800A30F5D /* SettingsViewController.swift */; };
+		F5B36ECB22984D3900A30F5D /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B36EBD22984D3800A30F5D /* SecondViewController.swift */; };
+		F5B36ECC22984D3900A30F5D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B36EBE22984D3800A30F5D /* LoginViewController.swift */; };
+		F5B36ECE22984D3900A30F5D /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B36EC022984D3800A30F5D /* Message.swift */; };
+		F5B36ECF22984D3900A30F5D /* ChatService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B36EC122984D3800A30F5D /* ChatService.swift */; };
+		F5B36ED022984D3900A30F5D /* HackathonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B36EC222984D3900A30F5D /* HackathonTableViewCell.swift */; };
+		F5B36ED122984D3900A30F5D /* ProfileLangTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B36EC322984D3900A30F5D /* ProfileLangTableCellView.swift */; };
+		F5B36ED222984D3900A30F5D /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B36EC422984D3900A30F5D /* RegistrationViewController.swift */; };
+		F5B36ED322984D3900A30F5D /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B36EC522984D3900A30F5D /* UserTableViewCell.swift */; };
+		F5B36ED522984D3900A30F5D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B36EC722984D3900A30F5D /* User.swift */; };
+		F5B36ED622984D3900A30F5D /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B36EC822984D3900A30F5D /* FirstViewController.swift */; };
+		F5B36EDA2298530F00A30F5D /* ThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B36ED82298530F00A30F5D /* ThirdViewController.swift */; };
+		F5B36EDB2298530F00A30F5D /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B36ED92298530F00A30F5D /* ChatViewController.swift */; };
 		F5D7B7C92294F45300A19C8D /* FirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D7B7C82294F45300A19C8D /* FirebaseService.swift */; };
 		F5D7B7CD2294F98F00A19C8D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F5D7B7CC2294F98F00A19C8D /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
@@ -64,8 +65,6 @@
 		C85F619562C50CFF0DEB46AA /* Pods_HackMeetTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HackMeetTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F552D1A1224D44780064DC0B /* HackMeet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HackMeet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F552D1A4224D44780064DC0B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		F552D1A6224D44780064DC0B /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
-		F552D1A8224D44780064DC0B /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		F552D1AB224D44780064DC0B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F552D1AD224D44790064DC0B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F552D1B0224D44790064DC0B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -76,20 +75,23 @@
 		F552D1C2224D44790064DC0B /* HackMeetUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HackMeetUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F552D1C6224D44790064DC0B /* HackMeetUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HackMeetUITests.swift; sourceTree = "<group>"; };
 		F552D1C8224D44790064DC0B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F552D1D6224D49AC0064DC0B /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
-		F570BFF9227739DB00BDE3D4 /* ProfileLangTableCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileLangTableCellView.swift; sourceTree = "<group>"; };
 		F570BFFF2278DAC800BDE3D4 /* JSON format.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = "JSON format.rtf"; sourceTree = "<group>"; };
 		F570C0012278DECD00BDE3D4 /* HackMeet.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HackMeet.entitlements; sourceTree = "<group>"; };
-		F570C0022278E57B00BDE3D4 /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
-		F5726E0D226510A200C6986A /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		F5726E1522681DDB00C6986A /* ThirdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdViewController.swift; sourceTree = "<group>"; };
-		F5726E1722694B7F00C6986A /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
-		F5726E1922695E8300C6986A /* UserTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewController.swift; sourceTree = "<group>"; };
-		F5AE91462296DC7800191732 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
-		F5B084AE2295C54A00228FCC /* HackathonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HackathonTableViewCell.swift; sourceTree = "<group>"; };
-		F5D68035227A8A80008E47FF /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
-		F5D6803B227D2F95008E47FF /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		F5D7B7C62294D97F00A19C8D /* SettingsViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewCell.swift; sourceTree = "<group>"; };
+		F5AE91492296F2F400191732 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		F5B36EBB22984D3800A30F5D /* SettingsViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewCell.swift; sourceTree = "<group>"; };
+		F5B36EBC22984D3800A30F5D /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		F5B36EBD22984D3800A30F5D /* SecondViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		F5B36EBE22984D3800A30F5D /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		F5B36EC022984D3800A30F5D /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		F5B36EC122984D3800A30F5D /* ChatService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatService.swift; sourceTree = "<group>"; };
+		F5B36EC222984D3900A30F5D /* HackathonTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HackathonTableViewCell.swift; sourceTree = "<group>"; };
+		F5B36EC322984D3900A30F5D /* ProfileLangTableCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileLangTableCellView.swift; sourceTree = "<group>"; };
+		F5B36EC422984D3900A30F5D /* RegistrationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
+		F5B36EC522984D3900A30F5D /* UserTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
+		F5B36EC722984D3900A30F5D /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		F5B36EC822984D3900A30F5D /* FirstViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
+		F5B36ED82298530F00A30F5D /* ThirdViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThirdViewController.swift; sourceTree = "<group>"; };
+		F5B36ED92298530F00A30F5D /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		F5D7B7C82294F45300A19C8D /* FirebaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseService.swift; sourceTree = "<group>"; };
 		F5D7B7CC2294F98F00A19C8D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -170,17 +172,25 @@
 		F552D1A3224D44780064DC0B /* HackMeet */ = {
 			isa = PBXGroup;
 			children = (
-				F570C0012278DECD00BDE3D4 /* HackMeet.entitlements */,
 				F552D1A4224D44780064DC0B /* AppDelegate.swift */,
+				F5B36EC122984D3800A30F5D /* ChatService.swift */,
+				F5B36EC022984D3800A30F5D /* Message.swift */,
+				F5B36EC722984D3900A30F5D /* User.swift */,
+				F5AE91492296F2F400191732 /* Constants.swift */,
 				F5D7B7C82294F45300A19C8D /* FirebaseService.swift */,
-				F570C0022278E57B00BDE3D4 /* Networking.swift */,
-				F5AE91482296DC8300191732 /* Login and registration */,
-				F570BFFB227739E800BDE3D4 /* ProfileViewController */,
-				F570BFFC22773A1100BDE3D4 /* ExploreViewController */,
-				F570BFFD22773A2C00BDE3D4 /* ChatViewController */,
-				F570BFFE22773A4E00BDE3D4 /* SettingsViewController */,
+				F5B36EBE22984D3800A30F5D /* LoginViewController.swift */,
+				F5B36EC422984D3900A30F5D /* RegistrationViewController.swift */,
+				F5B36EC822984D3900A30F5D /* FirstViewController.swift */,
+				F5B36EBD22984D3800A30F5D /* SecondViewController.swift */,
+				F5B36ED82298530F00A30F5D /* ThirdViewController.swift */,
+				F5B36ED92298530F00A30F5D /* ChatViewController.swift */,
+				F5B36EBC22984D3800A30F5D /* SettingsViewController.swift */,
+				F5B36EC222984D3900A30F5D /* HackathonTableViewCell.swift */,
+				F5B36EC322984D3900A30F5D /* ProfileLangTableCellView.swift */,
+				F5B36EBB22984D3800A30F5D /* SettingsViewCell.swift */,
+				F5B36EC522984D3900A30F5D /* UserTableViewCell.swift */,
+				F570C0012278DECD00BDE3D4 /* HackMeet.entitlements */,
 				F552D1AA224D44780064DC0B /* Main.storyboard */,
-				F5726E0D226510A200C6986A /* User.swift */,
 				F552D1AD224D44790064DC0B /* Assets.xcassets */,
 				F552D1AF224D44790064DC0B /* LaunchScreen.storyboard */,
 				F5D7B7CC2294F98F00A19C8D /* GoogleService-Info.plist */,
@@ -206,53 +216,6 @@
 				F552D1C8224D44790064DC0B /* Info.plist */,
 			);
 			path = HackMeetUITests;
-			sourceTree = "<group>";
-		};
-		F570BFFB227739E800BDE3D4 /* ProfileViewController */ = {
-			isa = PBXGroup;
-			children = (
-				F552D1A6224D44780064DC0B /* FirstViewController.swift */,
-				F570BFF9227739DB00BDE3D4 /* ProfileLangTableCellView.swift */,
-				F5B084AE2295C54A00228FCC /* HackathonTableViewCell.swift */,
-			);
-			path = ProfileViewController;
-			sourceTree = "<group>";
-		};
-		F570BFFC22773A1100BDE3D4 /* ExploreViewController */ = {
-			isa = PBXGroup;
-			children = (
-				F552D1A8224D44780064DC0B /* SecondViewController.swift */,
-				F5726E1922695E8300C6986A /* UserTableViewController.swift */,
-				F5726E1722694B7F00C6986A /* UserTableViewCell.swift */,
-			);
-			path = ExploreViewController;
-			sourceTree = "<group>";
-		};
-		F570BFFD22773A2C00BDE3D4 /* ChatViewController */ = {
-			isa = PBXGroup;
-			children = (
-				F5726E1522681DDB00C6986A /* ThirdViewController.swift */,
-				F5D68035227A8A80008E47FF /* ChatViewController.swift */,
-			);
-			path = ChatViewController;
-			sourceTree = "<group>";
-		};
-		F570BFFE22773A4E00BDE3D4 /* SettingsViewController */ = {
-			isa = PBXGroup;
-			children = (
-				F552D1D6224D49AC0064DC0B /* SettingsViewController.swift */,
-				F5D7B7C62294D97F00A19C8D /* SettingsViewCell.swift */,
-			);
-			path = SettingsViewController;
-			sourceTree = "<group>";
-		};
-		F5AE91482296DC8300191732 /* Login and registration */ = {
-			isa = PBXGroup;
-			children = (
-				F5D6803B227D2F95008E47FF /* LoginViewController.swift */,
-				F5AE91462296DC7800191732 /* RegistrationViewController.swift */,
-			);
-			path = "Login and registration";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -486,22 +449,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F5D6803C227D2F95008E47FF /* LoginViewController.swift in Sources */,
-				F552D1A9224D44780064DC0B /* SecondViewController.swift in Sources */,
-				F5D7B7C72294D97F00A19C8D /* SettingsViewCell.swift in Sources */,
-				F570C0032278E57B00BDE3D4 /* Networking.swift in Sources */,
+				F5B36ECC22984D3900A30F5D /* LoginViewController.swift in Sources */,
+				F5B36ECB22984D3900A30F5D /* SecondViewController.swift in Sources */,
+				F5AE914A2296F2F400191732 /* Constants.swift in Sources */,
+				F5B36EC922984D3900A30F5D /* SettingsViewCell.swift in Sources */,
+				F5B36ED322984D3900A30F5D /* UserTableViewCell.swift in Sources */,
+				F5B36ECA22984D3900A30F5D /* SettingsViewController.swift in Sources */,
+				F5B36ECF22984D3900A30F5D /* ChatService.swift in Sources */,
+				F5B36ED122984D3900A30F5D /* ProfileLangTableCellView.swift in Sources */,
+				F5B36ECE22984D3900A30F5D /* Message.swift in Sources */,
+				F5B36ED622984D3900A30F5D /* FirstViewController.swift in Sources */,
+				F5B36ED222984D3900A30F5D /* RegistrationViewController.swift in Sources */,
+				F5B36EDB2298530F00A30F5D /* ChatViewController.swift in Sources */,
 				F5D7B7C92294F45300A19C8D /* FirebaseService.swift in Sources */,
-				F5D68036227A8A80008E47FF /* ChatViewController.swift in Sources */,
-				F5726E1622681DDB00C6986A /* ThirdViewController.swift in Sources */,
+				F5B36ED022984D3900A30F5D /* HackathonTableViewCell.swift in Sources */,
+				F5B36ED522984D3900A30F5D /* User.swift in Sources */,
+				F5B36EDA2298530F00A30F5D /* ThirdViewController.swift in Sources */,
 				F552D1A5224D44780064DC0B /* AppDelegate.swift in Sources */,
-				F5726E0E226510A200C6986A /* User.swift in Sources */,
-				F570BFFA227739DB00BDE3D4 /* ProfileLangTableCellView.swift in Sources */,
-				F5AE91472296DC7800191732 /* RegistrationViewController.swift in Sources */,
-				F5726E1822694B7F00C6986A /* UserTableViewCell.swift in Sources */,
-				F552D1A7224D44780064DC0B /* FirstViewController.swift in Sources */,
-				F5B084AF2295C54A00228FCC /* HackathonTableViewCell.swift in Sources */,
-				F552D1D7224D49AC0064DC0B /* SettingsViewController.swift in Sources */,
-				F5726E1A22695E8300C6986A /* UserTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -15,9 +15,9 @@ class User  {
     var hackathons = [String]()
     var summary = ""
     var email = ""
-    var id: Int? = nil
-    var checksum: String? = nil
-    var numHacks: Int? = 0
+    var id: String = ""
+    var checksum: String = ""
+    var numHacks: Int = 0
     var proPic = UIImage()
     var chatColor = UIColor()
     var contactList = [User]()
